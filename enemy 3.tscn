@@ -1,0 +1,123 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2dkukh8w6vjp"]
+
+[ext_resource type="Texture2D" uid="uid://m61mtmuns7re" path="res://enemies/enemy 3/attack/3.png" id="1_14bfs"]
+[ext_resource type="Script" uid="uid://ds7wapcgw62mu" path="res://enemy_3.gd" id="1_holnw"]
+[ext_resource type="Texture2D" uid="uid://bn26ufyecudkq" path="res://enemies/enemy 3/attack/1.png" id="2_holnw"]
+[ext_resource type="Texture2D" uid="uid://b0k2u4kainm8n" path="res://enemies/enemy 3/attack/2.png" id="3_ehux8"]
+[ext_resource type="Texture2D" uid="uid://b11xe76c44xgg" path="res://enemies/enemy 3/attack/4.png" id="4_cwrjl"]
+[ext_resource type="Texture2D" uid="uid://b3jio67x32vb5" path="res://enemies/enemy 3/death/1.png" id="5_albh7"]
+[ext_resource type="Texture2D" uid="uid://cl7qqt0g00osc" path="res://enemies/enemy 3/death/2.png" id="6_ijo5r"]
+[ext_resource type="Texture2D" uid="uid://b8agcqacksw7g" path="res://enemies/enemy 3/death/3.png" id="7_nk6e4"]
+[ext_resource type="Texture2D" uid="uid://d1mn7j87b5qn" path="res://enemies/enemy 3/death/4.png" id="8_al1mw"]
+[ext_resource type="Texture2D" uid="uid://efb85211ivkt" path="res://enemies/enemy 3/idle/1.png" id="9_gvtdp"]
+[ext_resource type="Texture2D" uid="uid://w0wjku2j6w7v" path="res://enemies/enemy 3/idle/2.png" id="10_u5t74"]
+[ext_resource type="Texture2D" uid="uid://t3s6u4r6hdvx" path="res://enemies/enemy 3/idle/3.png" id="11_oyp6x"]
+[ext_resource type="Texture2D" uid="uid://l20ncphiuoa7" path="res://enemies/enemy 3/idle/4.png" id="12_5s7ou"]
+[ext_resource type="Texture2D" uid="uid://ucysasjtj5c" path="res://enemies/enemy 3/walk/1.png" id="13_samcb"]
+[ext_resource type="Texture2D" uid="uid://dj6mynsy4oln1" path="res://enemies/enemy 3/walk/2.png" id="14_0e5pe"]
+[ext_resource type="Texture2D" uid="uid://behqpxsahgonx" path="res://enemies/enemy 3/walk/3.png" id="15_3thj6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14bfs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_14bfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_holnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ehux8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cwrjl")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_albh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ijo5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nk6e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_al1mw")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gvtdp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gvtdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u5t74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oyp6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5s7ou")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_samcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0e5pe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3thj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0e5pe")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_holnw"]
+size = Vector2(77, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehux8"]
+size = Vector2(77, 78)
+
+[node name="enemy 3" type="CharacterBody2D"]
+script = ExtResource("1_holnw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.21333334, 0.21333334)
+sprite_frames = SubResource("SpriteFrames_14bfs")
+animation = &"walk"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -38.5)
+shape = SubResource("RectangleShape2D_holnw")
+debug_color = Color(0.6617845, 0.514141, 0, 0.41960785)
+
+[node name="to_kill" type="Area2D" parent="."]
+position = Vector2(-0.5, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_kill"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ehux8")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://s0avgoj8exc5"]
+
+[ext_resource type="Texture2D" uid="uid://bc7tmh7rqwvsl" path="res://enemies/enemy 4/attack/1.png" id="2_lt4yx"]
+[ext_resource type="Script" uid="uid://beq7d2f4hlba1" path="res://sprite_2d.gd" id="2_mehiu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1wwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lt4yx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7cmv"]
+size = Vector2(306.30627, 314.04962)
+
+[node name="player" type="CharacterBody2D"]
+scale = Vector2(0.110999994, 0.121)
+script = ExtResource("2_mehiu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18.018005, -8.264473)
+scale = Vector2(0.72072077, 0.79889804)
+sprite_frames = SubResource("SpriteFrames_i1wwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16.528908)
+scale = Vector2(1, 0.99999976)
+shape = SubResource("RectangleShape2D_f7cmv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
